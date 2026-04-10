@@ -14,7 +14,7 @@ pwd_context = CryptContext(schemes=["sha256_crypt"], deprecated="auto")
 
 pwd_context = CryptContext(
     schemes=["bcrypt", "sha256_crypt"],
-    default="sha256_crypt",  # Используем sha256_crypt как основной
+    default="sha256_crypt",  
     deprecated="bcrypt"
 )
 

@@ -2,7 +2,7 @@
 site_name: Web development tools 2025-2026 - 6th semester
 site_description: Лабораторные работы по курсу веб-программирования 6-ого семестра
 site_author: Данилова Анастасия
-site_url: https://k3339.github.io/ITMO_ICT_WebDevelopment_tools_2025-2026
+site_url: https://ndanilova.github.io/ITMO_ICT_WebDevelopment_tools_2025-2026
 
 theme:
   name: material
@@ -28,7 +28,7 @@ theme:
         name: Switch to light mode
 
 repo_name: ITMO_ICT_WebDevelopment_tools_2025-2026
-repo_url: https://github.com/k3339/ITMO_ICT_WebDevelopment_tools_2025-2026
+repo_url: https://github.com/ndanilova/ITMO_ICT_WebDevelopment_tools_2025-2026
 
 nav:
   - Home: index.md
@@ -56,6 +56,4 @@ markdown_extensions:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/k3339
-    - icon: fontawesome/brands/telegram
-      link: https://t.me/k3339
+      link: https://github.com/ndanilova

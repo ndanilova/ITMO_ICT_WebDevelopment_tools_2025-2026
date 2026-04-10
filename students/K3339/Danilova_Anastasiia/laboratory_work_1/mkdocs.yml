@@ -1,6 +1,0 @@
-site_name: FastAPI Time Management Lab
-site_description: Laboratory work report for FastAPI Time Management Application
-theme:
-  name: material
-nav:
-  - Home: index.md
