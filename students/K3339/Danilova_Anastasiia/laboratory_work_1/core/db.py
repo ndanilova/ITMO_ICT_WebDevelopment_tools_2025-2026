@@ -1,0 +1,9 @@
+import os
+from dotenv import load_dotenv
+from sqlmodel import create_engine
+
+load_dotenv()
+
+DATABASE_URL = os.getenv("DB_URL")
+
+engine = create_engine(DATABASE_URL, echo=True)
