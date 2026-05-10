@@ -37,6 +37,8 @@ nav:
       - lab1/entities.md
       - lab1/api.md
       - lab1/practices.md
+  - Laboratory Work 2: 
+      - lab2/laboratory.md
 plugins:
   - search
   - mkdocstrings:
