@@ -2,22 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://ndanilova.github.io/ITMO_ICT_WebDevelopment_tools_2025-2026/</loc>
-         <lastmod>2026-04-10</lastmod>
+         <lastmod>2026-05-10</lastmod>
     </url>
     <url>
          <loc>https://ndanilova.github.io/ITMO_ICT_WebDevelopment_tools_2025-2026/lab1/api/</loc>
-         <lastmod>2026-04-10</lastmod>
+         <lastmod>2026-05-10</lastmod>
     </url>
     <url>
          <loc>https://ndanilova.github.io/ITMO_ICT_WebDevelopment_tools_2025-2026/lab1/entities/</loc>
-         <lastmod>2026-04-10</lastmod>
+         <lastmod>2026-05-10</lastmod>
     </url>
     <url>
          <loc>https://ndanilova.github.io/ITMO_ICT_WebDevelopment_tools_2025-2026/lab1/laboratory/</loc>
-         <lastmod>2026-04-10</lastmod>
+         <lastmod>2026-05-10</lastmod>
     </url>
     <url>
          <loc>https://ndanilova.github.io/ITMO_ICT_WebDevelopment_tools_2025-2026/lab1/practices/</loc>
-         <lastmod>2026-04-10</lastmod>
+         <lastmod>2026-05-10</lastmod>
+    </url>
+    <url>
+         <loc>https://ndanilova.github.io/ITMO_ICT_WebDevelopment_tools_2025-2026/lab2/laboratory/</loc>
+         <lastmod>2026-05-10</lastmod>
     </url>
 </urlset>
