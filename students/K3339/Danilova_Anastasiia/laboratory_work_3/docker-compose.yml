@@ -1,0 +1,53 @@
+services:
+  db:
+    image: postgres:15
+    env_file: .env
+    environment:
+      POSTGRES_DB: time_manager_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+
+  app:
+    build: 
+      context: .
+      dockerfile: app/Dockerfile
+    ports:
+      - "8000:8000"
+    env_file: .env
+    environment:
+      # Переопределяем URL для работы внутри Docker-сети
+      DB_URL_ASYNC: postgresql+asyncpg://postgres:postgres@db/time_manager_db
+    depends_on:
+      - db
+
+  parser:
+    build:
+      context: .
+      dockerfile: parser_service/Dockerfile
+    ports:
+      - "8001:8001"
+    env_file: .env
+    environment:
+      DB_URL_ASYNC: postgresql+asyncpg://postgres:postgres@db/time_manager_db
+    depends_on:
+      - db
+
+  worker:
+    build:
+      context: .
+      dockerfile: app/Dockerfile # Воркер может использовать тот же образ
+    command: celery -A celery_app worker --loglevel=info
+    env_file: .env
+    environment:
+      DB_URL_ASYNC: postgresql+asyncpg://postgres:postgres@db/time_manager_db
+      CELERY_BROKER_URL: redis://redis:6379/0
+    depends_on:
+      - redis
+      - db
