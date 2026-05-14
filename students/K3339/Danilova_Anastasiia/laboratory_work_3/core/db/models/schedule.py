@@ -3,13 +3,13 @@ from typing import Optional, List
 
 from sqlmodel import SQLModel, Field, Relationship
 
-from db.models.mixins import TimestampMixin
+from core.db.models.mixins import TimestampMixin
 
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from db.models.task import Task
-    from db.models.user import User
+    from core.db.models.task import Task
+    from core.db.models.user import User
 
 # base class
 class ScheduleDayBase(SQLModel):
@@ -28,7 +28,7 @@ class ScheduleDay(ScheduleDayBase, TimestampMixin, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
 
     user_id: Optional[int] = Field(default=None, foreign_key="user.id")
-    user: Optional[User] = Relationship(back_populates="schedule_days")
+    user: Optional["User"] = Relationship(back_populates="schedule_days")
 
     schedule_items: List["ScheduleItem"] = Relationship(
         back_populates="schedule_day", sa_relationship_kwargs={"cascade": "all, delete"}

@@ -3,8 +3,8 @@ from typing import List
 from fastapi import APIRouter, Depends, HTTPException
 from sqlmodel import Session, select
 
-from api.deps import get_session
-from db.models.tag import Tag, TagCreate, TagPublic, TagUpdate
+from app.api.deps import get_session
+from core.db.models.tag import Tag, TagCreate, TagPublic, TagUpdate
 
 
 router = APIRouter(prefix="/tags", tags=["Tags"])

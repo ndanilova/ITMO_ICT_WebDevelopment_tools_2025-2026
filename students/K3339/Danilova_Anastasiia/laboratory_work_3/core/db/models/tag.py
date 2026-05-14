@@ -5,7 +5,7 @@ from sqlmodel import SQLModel, Field, Relationship
 
 from typing import TYPE_CHECKING
 if TYPE_CHECKING:
-    from db.models.task import Task
+    from core.db.models.task import Task
 
 class TaskTag(SQLModel, table=True):
     task_id: Optional[int] = Field(

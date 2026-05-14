@@ -1,15 +1,19 @@
-from fastapi import FastAPI, BackgroundTasks
-from pydantic import HttpUrl
-import asyncio
-# Импортируй логику из своего парсера
-from parser_logic import parse_page 
+import aiohttp
+from fastapi import FastAPI
+from pydantic import BaseModel, HttpUrl
 
-app = FastAPI()
+from parser_service.logic import parse_page
+
+app = FastAPI(title="Parser service")
+
+
+class ParseRequest(BaseModel):
+    url: HttpUrl
+
 
 @app.post("/parse")
-async def start_parsing(url: str):
-    # Логика вызова твоего асинхронного парсера
-    import aiohttp
+async def start_parsing(body: ParseRequest) -> dict[str, str]:
+    url_str = str(body.url)
     async with aiohttp.ClientSession() as session:
-        await parse_page(session, url)
-    return {"status": "success", "url": url}
+        await parse_page(session, url_str)
+    return {"status": "success", "url": url_str}

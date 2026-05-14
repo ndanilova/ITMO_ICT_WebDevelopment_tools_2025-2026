@@ -1,21 +1,18 @@
 from datetime import datetime
 from enum import Enum
-from typing import Optional, List
+from typing import TYPE_CHECKING, List, Optional
 
-from sqlmodel import SQLModel, Field, Relationship
+from sqlmodel import Field, Relationship, SQLModel
 
-from db.models.mixins import TimestampMixin
-
-from db.models.tag import TaskTag
-
-from typing import TYPE_CHECKING
+from core.db.models.mixins import TimestampMixin
+from core.db.models.tag import TaskTag
 
 if TYPE_CHECKING:
-    from db.models.notification import Notification
-    from db.models.schedule import ScheduleItem
-    from db.models.tag import Tag
-    from db.models.timelog import TimeLog
-    from db.models.user import User
+    from core.db.models.notification import Notification
+    from core.db.models.schedule import ScheduleItem
+    from core.db.models.tag import Tag
+    from core.db.models.timelog import TimeLog
+    from core.db.models.user import User
 
 
 
@@ -59,7 +56,7 @@ class Task(TaskBase, TimestampMixin, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
 
     user_id: Optional[int] = Field(default=None, foreign_key="user.id")
-    user: Optional[User] = Relationship(back_populates="tasks")
+    user: Optional["User"] = Relationship(back_populates="tasks")
 
     # relationships
     time_logs: List["TimeLog"] = Relationship(

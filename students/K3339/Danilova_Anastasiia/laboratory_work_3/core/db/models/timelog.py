@@ -5,7 +5,7 @@ from sqlmodel import SQLModel, Field, Relationship
 
 from typing import TYPE_CHECKING
 if TYPE_CHECKING:
-    from db.models.task import Task
+    from core.db.models.task import Task
     
 # base class
 class TimeLogBase(SQLModel):
@@ -28,7 +28,7 @@ class TimeLog(TimeLogBase, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
 
     task_id: int = Field(foreign_key="task.id")
-    task: Optional[Task] = Relationship(back_populates="time_logs")
+    task: Optional["Task"] = Relationship(back_populates="time_logs")
 
 # for API response
 class TimeLogPublic(TimeLogBase):

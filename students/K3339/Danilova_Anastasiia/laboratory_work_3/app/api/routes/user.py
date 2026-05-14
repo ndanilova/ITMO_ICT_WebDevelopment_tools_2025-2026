@@ -3,9 +3,9 @@ from typing import List
 from fastapi import APIRouter, Depends, HTTPException
 from sqlmodel import Session, select
 
-from api.deps import get_session
+from app.api.deps import get_session
+from core.db.models.user import User, UserCreate, UserPublic, UserUpdate
 from core.security import hash_password
-from db.models.user import User, UserCreate, UserPublic, UserUpdate
 
 
 router = APIRouter(prefix="/users", tags=["Users"])

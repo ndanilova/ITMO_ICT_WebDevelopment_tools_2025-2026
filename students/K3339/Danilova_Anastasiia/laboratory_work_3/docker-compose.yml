@@ -1,31 +1,45 @@
 services:
   db:
     image: postgres:15
-    env_file: .env
     environment:
       POSTGRES_DB: time_manager_db
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
+    # Host 5433 avoids conflict with a local PostgreSQL on 5432. Inside the stack, use db:5432.
     ports:
-      - "5432:5432"
+      - "5433:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d time_manager_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
   redis:
-    image: redis:alpine
+    image: redis:7-alpine
     ports:
       - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
 
   app:
-    build: 
+    build:
       context: .
       dockerfile: app/Dockerfile
     ports:
       - "8000:8000"
     env_file: .env
     environment:
-      # Переопределяем URL для работы внутри Docker-сети
-      DB_URL_ASYNC: postgresql+asyncpg://postgres:postgres@db/time_manager_db
+      DB_URL: postgresql://postgres:postgres@db:5432/time_manager_db
+      DB_URL_ASYNC: postgresql+asyncpg://postgres:postgres@db:5432/time_manager_db
+      CELERY_BROKER_URL: redis://redis:6379/0
     depends_on:
-      - db
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
 
   parser:
     build:
@@ -35,19 +49,25 @@ services:
       - "8001:8001"
     env_file: .env
     environment:
-      DB_URL_ASYNC: postgresql+asyncpg://postgres:postgres@db/time_manager_db
+      DB_URL: postgresql://postgres:postgres@db:5432/time_manager_db
+      DB_URL_ASYNC: postgresql+asyncpg://postgres:postgres@db:5432/time_manager_db
     depends_on:
-      - db
+      db:
+        condition: service_healthy
 
   worker:
     build:
       context: .
-      dockerfile: app/Dockerfile # Воркер может использовать тот же образ
+      dockerfile: app/Dockerfile
     command: celery -A celery_app worker --loglevel=info
+    working_dir: /srv
     env_file: .env
     environment:
-      DB_URL_ASYNC: postgresql+asyncpg://postgres:postgres@db/time_manager_db
+      DB_URL: postgresql://postgres:postgres@db:5432/time_manager_db
+      DB_URL_ASYNC: postgresql+asyncpg://postgres:postgres@db:5432/time_manager_db
       CELERY_BROKER_URL: redis://redis:6379/0
     depends_on:
-      - redis
-      - db
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy

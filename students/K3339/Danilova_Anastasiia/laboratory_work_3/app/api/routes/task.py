@@ -2,9 +2,8 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlmodel import Session
 from typing import List
 from sqlmodel import select
-from db.models.task import Task, TaskCreate, TaskUpdate, TaskPublic, TaskFull
-
-from api.deps import get_session
+from app.api.deps import get_session
+from core.db.models.task import Task, TaskCreate, TaskUpdate, TaskPublic, TaskFull
 
 router = APIRouter(prefix="/tasks", tags=["Tasks"])
 

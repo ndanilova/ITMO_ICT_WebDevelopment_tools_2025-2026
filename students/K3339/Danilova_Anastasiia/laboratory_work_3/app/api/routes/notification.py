@@ -3,8 +3,8 @@ from typing import List
 from fastapi import APIRouter, Depends, HTTPException
 from sqlmodel import Session, select
 
-from api.deps import get_session
-from db.models.notification import (
+from app.api.deps import get_session
+from core.db.models.notification import (
     Notification,
     NotificationCreate,
     NotificationPublic,

@@ -3,8 +3,8 @@ from typing import List
 from fastapi import APIRouter, Depends, HTTPException
 from sqlmodel import Session, select
 
-from api.deps import get_session
-from db.models.timelog import TimeLog, TimeLogCreate, TimeLogPublic, TimeLogUpdate
+from app.api.deps import get_session
+from core.db.models.timelog import TimeLog, TimeLogCreate, TimeLogPublic, TimeLogUpdate
 
 
 router = APIRouter(prefix="/time-logs", tags=["TimeLogs"])

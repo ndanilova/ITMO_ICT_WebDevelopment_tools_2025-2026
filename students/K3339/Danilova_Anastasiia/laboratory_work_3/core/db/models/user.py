@@ -4,14 +4,14 @@ from typing import Optional, List
 from pydantic import EmailStr
 from sqlmodel import SQLModel, Field, Relationship
 
-from db.models.mixins import TimestampMixin
+from core.db.models.mixins import TimestampMixin
 
 from typing import TYPE_CHECKING
 if TYPE_CHECKING:
-    from db.models.notification import Notification
-    from db.models.schedule import ScheduleDay
-    from db.models.tag import Tag
-    from db.models.task import Task
+    from core.db.models.notification import Notification
+    from core.db.models.schedule import ScheduleDay
+    from core.db.models.tag import Tag
+    from core.db.models.task import Task
 
 # base class
 class UserBase(SQLModel):

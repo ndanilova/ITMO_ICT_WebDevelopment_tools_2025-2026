@@ -6,8 +6,8 @@ from sqlmodel import SQLModel, Field, Relationship
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from db.models.task import Task
-    from db.models.user import User
+    from core.db.models.task import Task
+    from core.db.models.user import User
 
 
 # base class

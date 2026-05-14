@@ -1,12 +1,19 @@
 FROM python:3.11-slim
 
-WORKDIR /app
+WORKDIR /srv
 
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends build-essential libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
 
-COPY . .
-COPY ../core ./core
+COPY requirements.txt /srv/requirements.txt
+RUN pip install --no-cache-dir -r /srv/requirements.txt
 
-# Запускаем FastAPI-обертку парсера (Подзадача 1)
-CMD ["uvicorn", "parser_api:app", "--host", "0.0.0.0", "--port", "8001"]
+COPY core /srv/core
+COPY parser_service /srv/parser_service
+
+ENV PYTHONPATH=/srv
+
+EXPOSE 8001
+
+CMD ["uvicorn", "parser_service.parser_api:app", "--host", "0.0.0.0", "--port", "8001"]

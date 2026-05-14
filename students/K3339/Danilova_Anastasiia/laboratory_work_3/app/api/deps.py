@@ -5,9 +5,8 @@ from sqlmodel import Session
 from sqlmodel import select
 
 from core.db import engine
+from core.db.models.user import User
 from core.security import ALGORITHM, SECRET_KEY
-from db.models.user import User
-
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/login")
 

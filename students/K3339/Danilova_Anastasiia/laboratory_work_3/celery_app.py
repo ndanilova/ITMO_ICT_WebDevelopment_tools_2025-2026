@@ -1,17 +1,25 @@
+import asyncio
 import os
+
+import aiohttp
 from celery import Celery
+from dotenv import load_dotenv
+
+load_dotenv()
 
 celery_app = Celery(
     "worker",
-    broker=os.getenv("CELERY_BROKER_URL", "redis://localhost:6379/0")
+    broker=os.getenv("CELERY_BROKER_URL", "redis://localhost:6379/0"),
 )
 
-@celery_instance.task(name="run_parsing_task")
-def run_parsing_task(url: str):
-    # Здесь мы вызываем парсер. 
-    # Так как Celery работает синхронно, используем библиотеку requests 
-    # или запускаем асинхронный цикл внутри
-    import asyncio
-    from parser_service.parser_logic import parse_page
-    # запуск асинхронного парсера в синхронном воркере
-    asyncio.run(start_parse_logic(url))
+
+@celery_app.task(name="run_parsing_task")
+def run_parsing_task(url: str) -> dict[str, str]:
+    from parser_service.logic import parse_page
+
+    async def _run() -> None:
+        async with aiohttp.ClientSession() as session:
+            await parse_page(session, url)
+
+    asyncio.run(_run())
+    return {"status": "ok", "url": url}
