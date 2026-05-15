@@ -14,12 +14,12 @@ celery_app = Celery(
 
 
 @celery_app.task(name="run_parsing_task")
-def run_parsing_task(url: str) -> dict[str, str]:
+def run_parsing_task(url: str) -> dict[str, str | int]:
     from parser_service.logic import parse_page
 
-    async def _run() -> None:
+    async def _run():
         async with aiohttp.ClientSession() as session:
-            await parse_page(session, url)
+            return await parse_page(session, url)
 
-    asyncio.run(_run())
-    return {"status": "ok", "url": url}
+    task = asyncio.run(_run())
+    return {"status": "ok", "url": url, "title": task.title, "task_id": task.id}
