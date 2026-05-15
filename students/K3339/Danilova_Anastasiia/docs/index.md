@@ -5,3 +5,4 @@
 
 * [Лабораторная работа №1](lab1/laboratory.md);
 * [Лабораторная работа №2](lab2/laboratory.md);
+* [Лабораторная работа №3](lab3/laboratory.md);
