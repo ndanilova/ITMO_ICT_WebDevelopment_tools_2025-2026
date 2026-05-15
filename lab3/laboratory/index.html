@@ -12,29 +12,27 @@
         <meta name="author" content="Данилова Анастасия">
       
       
-        <link rel="canonical" href="https://ndanilova.github.io/ITMO_ICT_WebDevelopment_tools_2025-2026/">
+        <link rel="canonical" href="https://ndanilova.github.io/ITMO_ICT_WebDevelopment_tools_2025-2026/lab3/laboratory/">
       
       
-      
-        <link rel="next" href="lab1/laboratory/">
       
       
         
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Web development tools 2025-2026 - 6th semester</title>
+        <title>Лабораторная работа 3. Упаковка FastAPI приложения в Docker, Работа с источниками данных и Очереди. - Web development tools 2025-2026 - 6th semester</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -53,9 +51,9 @@
       
     
     
-      <link rel="stylesheet" href="assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -80,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#6-" class="md-skip">
+        <a href="#3-fastapi-docker" class="md-skip">
           Skip to content
         </a>
       
@@ -94,7 +92,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="Web development tools 2025-2026 - 6th semester" class="md-header__button md-logo" aria-label="Web development tools 2025-2026 - 6th semester" data-md-component="logo">
+    <a href="../.." title="Web development tools 2025-2026 - 6th semester" class="md-header__button md-logo" aria-label="Web development tools 2025-2026 - 6th semester" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -114,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Home
+              Лабораторная работа 3. Упаковка FastAPI приложения в Docker, Работа с источниками данных и Очереди.
             
           </span>
         </div>
@@ -225,11 +223,9 @@
   
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="." class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
         
   
   
@@ -250,7 +246,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="lab1/laboratory/" class="md-tabs__link">
+        <a href="../../lab1/laboratory/" class="md-tabs__link">
           
   
   
@@ -270,7 +266,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="lab2/laboratory/" class="md-tabs__link">
+        <a href="../../lab2/laboratory/" class="md-tabs__link">
           
   
   
@@ -304,7 +300,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Web development tools 2025-2026 - 6th semester" class="md-nav__button md-logo" aria-label="Web development tools 2025-2026 - 6th semester" data-md-component="logo">
+    <a href="../.." title="Web development tools 2025-2026 - 6th semester" class="md-nav__button md-logo" aria-label="Web development tools 2025-2026 - 6th semester" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -331,35 +327,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Home
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -375,63 +346,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#6-" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Лабораторные работы по веб программированию за 6-ой семестр.
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Лабораторные работы по веб программированию за 6-ой семестр.">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#k3339" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Студент: Данилова Анастасия K3339
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Лабораторные:
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -497,7 +411,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lab1/laboratory/" class="md-nav__link">
+      <a href="../../lab1/laboratory/" class="md-nav__link">
         
   
   
@@ -525,7 +439,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lab1/entities/" class="md-nav__link">
+      <a href="../../lab1/entities/" class="md-nav__link">
         
   
   
@@ -553,7 +467,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lab1/api/" class="md-nav__link">
+      <a href="../../lab1/api/" class="md-nav__link">
         
   
   
@@ -581,7 +495,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lab1/practices/" class="md-nav__link">
+      <a href="../../lab1/practices/" class="md-nav__link">
         
   
   
@@ -670,7 +584,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lab2/laboratory/" class="md-nav__link">
+      <a href="../../lab2/laboratory/" class="md-nav__link">
         
   
   
@@ -715,6 +629,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -723,41 +639,79 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#6-" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Лабораторные работы по веб программированию за 6-ой семестр.
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Лабораторные работы по веб программированию за 6-ой семестр.">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#k3339" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Студент: Данилова Анастасия K3339
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Лабораторные:
+        Цели
       
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Выполннение
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Описание реализации
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Реализация парсера (Микросервис)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-celery-redis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Асинхронная очередь (Celery + Redis)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Вывод
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Демонстрация работы
+      
+    </span>
+  </a>
   
 </li>
       
@@ -781,16 +735,61 @@
   
 
 
-  <h1>Home</h1>
-
-<h2 id="6-">Лабораторные работы по веб программированию за 6-ой семестр.<a class="headerlink" href="#6-" title="Permanent link">&para;</a></h2>
-<h3 id="k3339">Студент: Данилова Анастасия K3339<a class="headerlink" href="#k3339" title="Permanent link">&para;</a></h3>
-<h3 id="_1">Лабораторные:<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
-<ul>
-<li><a href="lab1/laboratory/">Лабораторная работа №1</a>;</li>
-<li><a href="lab2/laboratory/">Лабораторная работа №2</a>;</li>
-<li><a href="lab3/laboratory/">Лабораторная работа №3</a>;</li>
-</ul>
+<h1 id="3-fastapi-docker">Лабораторная работа 3. Упаковка FastAPI приложения в Docker, Работа с источниками данных и Очереди.<a class="headerlink" href="#3-fastapi-docker" title="Permanent link">&para;</a></h1>
+<h2 id="_1">Цели<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>Научиться упаковывать FastAPI приложение в Docker, интегрировать парсер данных с базой данных и вызывать парсер через API и очередь.</p>
+<h2 id="_2">Выполннение<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h2 id="1">1. Описание реализации<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Архитектура контейнеризации
+Система разделена на 5 сервисов в docker-compose.yml:</li>
+</ol>
+<p>db: PostgreSQL (хранение задач). Настроен healthcheck для предотвращения ошибок старта зависимых сервисов.</p>
+<p>redis: Брокер сообщений для Celery.</p>
+<p>app: Основной API. Использует PYTHONPATH=/srv для доступа к ядру core.</p>
+<p>parser: Изолированный микросервис для парсинга, доступный по HTTP.</p>
+<p>worker: Экземпляр приложения, запускающий Celery-воркер для фоновых задач.</p>
+<h2 id="2">2. Реализация парсера (Микросервис)<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<p>Парсер реализован с использованием aiohttp для асинхронных сетевых запросов и BeautifulSoup4 для извлечения заголовка страницы. Для предотвращения перегрузки целевых ресурсов применен asyncio.Semaphore(5), ограничивающий количество одновременных подключений.</p>
+<h2 id="3-celery-redis">3. Асинхронная очередь (Celery + Redis)<a class="headerlink" href="#3-celery-redis" title="Permanent link">&para;</a></h2>
+<p>Для реализации Подзадачи 3 в файле celery_app.py настроен экземпляр Celery.</p>
+<p>Workflow: При поступлении запроса на /async-parse в основном приложении, задача run_parsing_task помещается в Redis.</p>
+<p>Execution: Воркер подхватывает задачу и запускает асинхронный событийный цикл (asyncio.run) для выполнения парсинга и записи в БД, не блокируя основной поток API.</p>
+<h2 id="_3">Вывод<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>В результате выполнения работы была создана масштабируемая система, упакованная в Docker. Приложение соответствует принципам микросервисной архитектуры: сервисы имеют общую бизнес-логику (core), но независимые среды исполнения и ответственности.</p>
+<h2 id="_4">Демонстрация работы<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Прямой вызов микросервиса парсера (Подзадача 2)
+Демонстрирует работу отдельного контейнера parser.</li>
+</ol>
+<p><div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s1">&#39;http://localhost:8001/parse&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;url&quot;: &quot;https://python.org&quot;}&#39;</span>
+</code></pre></div>
+<strong>Результат:</strong></p>
+<p><img alt="alt text" src="../image-1.png" /></p>
+<p><strong>Логи контейнера:</strong></p>
+<p><img alt="alt text" src="../image.png" /></p>
+<ol>
+<li>Асинхронный вызов через основной API </li>
+</ol>
+<p><div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s1">&#39;http://localhost:8000/async-parse&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;url&quot;: &quot;https://docs.python.org&quot;}&#39;</span>
+</code></pre></div>
+<strong>Результат:</strong></p>
+<p><img alt="alt text" src="../image-2.png" /></p>
+<p><strong>Логи контейнера:</strong></p>
+<p><img alt="alt text" src="../image-3.png" /></p>
+<p><img alt="alt text" src="../image-4.png" /></p>
+<ol>
+<li>Проверка записи в БД 
+Подтверждает, что данные успешно прошли путь от парсинга до сохранения в Postgres.</li>
+</ol>
+<p><strong>Результат:</strong></p>
+<p><img alt="alt text" src="../image-5.png" /></p>
+<p><strong>Логи контейнера:</strong></p>
+<p><img alt="alt text" src="../image-6.png" /></p>
 
 
 
@@ -856,10 +855,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "search.highlight", "search.suggest", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "search.highlight", "search.suggest", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>
